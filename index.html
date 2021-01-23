@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Disney Tsum Tsum Searcher</title>
+		<meta charset="utf-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="src/loader.js" type="module"></script>
+		<link rel="stylesheet" href="default-styles/tsum-finder-css.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<h1><img src="media/Disney_Tsum_Tsum_logo.png"><div>Disney Tsum Tsum Searcher</div></h1>
+		<main>
+			<aside>
+				<h1>{{getAppStatus}}</h1>
+				<!--Tags and Searching here-->
+				<details id="tags" v-for="category in sortedAttributes">
+					<summary><h2>{{category[0]}}</h2></summary>
+					<div id="categories">
+						<span v-for="a of category[1]">
+							<input type="checkbox" style="display: none" v-bind:id="a.replaceAll(' ', '|')"  v-on:change="selectTag">
+							<label v-bind:for="a.replaceAll(' ', '|')">
+								<div class="tag">
+									<div class="tagTop">
+										<p>{{a}}</p>
+									</div>
+								</div>
+							</label>
+						</span>
+					</div>
+				</details>
+			</aside>
+			<div id="results">
+				<!--Results Here-->
+				<div v-for="t in selectedTsums" v-bind:id="t.id" class="tsum">
+					<a v-bind:href="t.url">
+						<img v-bind:src="t.pic">
+						<!--h2>{{t.name}}</h2-->
+					</a>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

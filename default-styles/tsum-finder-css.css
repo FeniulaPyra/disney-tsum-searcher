@@ -1,0 +1,171 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: white;
+	text-shadow: 1px 1px #000;
+	text-decoration: none;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+main {
+	display: grid;
+	grid-template-columns: 2fr 6fr;
+	grid-template-areas: "aside  tsums";
+	grid-gap: none;
+	max-height: 100vh;
+}
+
+h1 {
+	display: flex;
+	align-items: center;
+	background: url("../media/felt-2.jpg"), linear-gradient(#0dd, #0dd, #0dd, #395d93);
+	background-size: 250px;
+	background-blend-mode: hard-light;
+	padding: 2vh;
+}
+h1 img {
+	width: auto;
+	height: 10vh;
+}
+
+aside {
+	background-color: green;
+	grid-area: aside;
+	background: url("../media/felt-2.jpg"), linear-gradient(to right, #395d93, #2e6ec6, #2e6ec6, #395d93);
+	background-blend-mode: multiply;
+	background-size: 250px, cover;
+	background-repeat: repeat, no-repeat;
+	padding: 1rem;
+}
+
+details {
+	margin: 1rem;
+}
+summary::-webkit-details-marker {
+	color: transparent;
+	display: none;
+}
+summary h2::before {
+	content: "▶";
+}
+details[open] summary h2::before {
+	content: "▼";
+}
+
+.tag, details {
+	margin: .5em;
+	background: url("../media/felt-2.jpg"), radial-gradient(#2e6ec6, #395d93);
+	background-blend-mode:soft-light;
+	background-size: 250px, 100vw;
+	background-repeat: repeat, no-repeat;
+	border-radius: 5px;
+	box-shadow: /*5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset,*/ 0 5px 5px #0005;
+	cursor: pointer;
+	padding: .1em;
+}
+.tag .tagTop, summary h2 {
+
+	text-align: center;
+	
+	background: url("../media/felt-2.jpg"), linear-gradient(#2e6ec6, #395d93);
+	background-blend-mode: soft-light;
+	background-size: 250px, 100%;
+	background-position: center;
+	background-repeat: repeat, no-repeat;
+	background-clip: content-box, content-box;
+
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset;/* 0 5px 5px #0005;*/
+	border: 2px dotted #0ff5;
+	
+	padding: 0;
+	
+}
+.tag .tagtop p {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border-radius: 5px;
+	font-size: 36px;
+
+}
+
+input[type="checkbox"]:checked + label .tag{
+	background: url("../media/felt-2.jpg"), linear-gradient(#e9a00c, #f7c00c);
+	background-blend-mode: overlay;
+	border-radius: 5px;
+}
+input[type="checkbox"]:checked + label .tagTop{
+
+	background: url("../media/felt-2.jpg"), linear-gradient(#f7c00c, #f7c00c, #f7c00c, #e06a08);
+	background-blend-mode: overlay;
+	background-clip: content-box;
+	
+	border-radius: 5px;
+	border: 2px dotted #fed123;
+	box-shadow: 5px 5px 10px #ffd51833 inset, -6px -6px 10px #e06a0833 inset;/* 0 5px 5px #0005;*/
+}
+input[type="checkbox"]:checked + label .tagTop *{
+	color: #633527;
+	text-shadow: 0px 1px #ffd51833;
+}
+
+#results {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	background: url("../media/felt-2.jpg"), linear-gradient(to right, #395d93, #2e6ec6, #2e6ec6, #395d93);
+	background-blend-mode: multiply;
+	background-size: 250px, cover;
+	background-repeat: repeat, no-repeat;
+	padding: 1rem;
+	grid-area: tsums;
+	flex-grow: 0;
+}
+.tsum {
+	/*padding: 2px;*/
+	margin: .5rem;
+	background: url("../media/felt-2.jpg"), radial-gradient(#395d93, #2e6ec6);
+	background-blend-mode:soft-light;
+	background-size: 250px, 100vh;
+	background-repeat: repeat, no-repeat;
+	border-radius: 35%;
+	background-clip:content-box, content-box;
+
+	box-shadow: /*5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset,*/ 0 5px 5px #0005;
+	
+}
+.tsum a {
+	display: flex;
+	flex-direction: column;
+	align-content: space-around;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	
+	background: url("../media/felt-2.jpg"), radial-gradient(#395d93, #2e6ec6);
+	background-blend-mode: soft-light;
+	background-size: 250px, 100%;
+	background-position: center;
+	background-clip:content-box, content-box;
+	background-repeat: repeat, no-repeat;
+	border-radius: 35%;
+	box-shadow: 5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset;/* 0 5px 5px #0005;*/
+	border: 2px dotted #0ff8;
+	
+	
+	margin: .25em;
+	padding: .25rem;
+	width: 8vw;
+	max-width: 8vw;
+	height: 8vw;
+	max-height: 8vw;
+	
+	font-size: 12px;
+}
+.tsum img {
+	border-radius: 100%;
+	width: 75%;
+}
