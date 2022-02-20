@@ -132,17 +132,18 @@ function init() {
 		let results = json.query.categorymembers;
 		let attr = results.map(c => c.title.split("Category:")[1]);
 		app.attributes.push(["Misc", attr.filter(c => !attributeSections.includes[c])]);
-		console.log(app.attributes);
 	});
 	
 	//gets other categorized attributes of tsums
 	for(let a of attributeSections) {
+        //if(!a) continue;
 		fetch("https://people.rit.edu/lep2738/tsum-searcher/proxy/proxy.php?action=getbycategory&category=" + a.replace(" ", "_"))
 		.then(response=>{return response.json();})
 		.then(json=> {
 			let results = json.query.categorymembers;
-			let attr = results.map(c => c.title.split("Category:")[1]);
-			app.attributes.push([a, attr]);
+			let attr = results.map(c => c.title.split("Category:")[1] || '').filter(a=>a.length >0);
+            if(attr && attr.length > 0)
+              app.attributes.push([a, attr]);
 		});
 	}
 	
