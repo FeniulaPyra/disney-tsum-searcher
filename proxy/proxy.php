@@ -15,7 +15,7 @@ if($action != "getalltsums") {
 	}
 	if($action == "getbycategory") {
 		$category = "Tsums";
-		if(array_key_exists("category", $_GET)) $category = $_GET["category"];
+		if(array_key_exists("category", $_GET)) $category = urlencode($_GET["category"]);
 		$url = "https://disneytsumtsum.fandom.com/api.php?action=query&format=json&cmlimit=max&list=categorymembers&cmtitle=Category:" . $category;
 	}
 }

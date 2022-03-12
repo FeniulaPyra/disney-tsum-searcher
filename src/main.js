@@ -79,7 +79,7 @@ function getTsumsWithTags(attributes){//, nextTsums) {
 	for(let attr of attributes) {
 		console.log(encodeURIComponent(attr.replaceAll("|", "_")));
 		fetch("https://people.rit.edu/lep2738/tsum-searcher/proxy/proxy.php?action=getbycategory&category="
-			  + attr.replaceAll("|", "_"))
+			  + encodeURIComponent(attr.replaceAll("|", "_")))//remove encodeuricomp if it doesnt work
 		.then(response => {return response.json();})
 		.then(json=>{
 			let tsumsInCategory = json.query.categorymembers.map(t=>t.pageid);
