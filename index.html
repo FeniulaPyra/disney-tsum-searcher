@@ -40,7 +40,7 @@
 				<!--Results Here-->
 				<div v-for="t in selectedTsums" v-bind:id="t.id" class="tsum">
 					<a v-bind:href="t.url" v-bind:alt="t.name">
-						<img v-bind:src="t.pic" v-bind:alt="t.name">
+						<img v-bind:src="t.pic" v-bind:alt="t.name" v-bind:title="t.name">
 						<!--h2>{{t.name}}</h2-->
 					</a>
 				</div>
