@@ -5,6 +5,7 @@
 	text-shadow: 1px 1px #000;
 	text-decoration: none;
 	font-family: 'M PLUS Rounded 1c', sans-serif;
+    border: none;
 }
 main {
 	display: grid;
@@ -35,15 +36,16 @@ aside {
 	background-size: 250px, cover;
 	background-repeat: repeat, no-repeat;
 	padding: 1rem;
+    min-height: 100vh;
 }
 
 details {
 	margin: 1rem;
 }
-summary::-webkit-details-marker {
-	color: transparent;
-	display: none;
+details summary {
+  list-style: none;
 }
+
 summary h2::before {
 	content: "▶";
 }
@@ -109,6 +111,53 @@ input[type="checkbox"]:checked + label .tagTop{
 input[type="checkbox"]:checked + label .tagTop *{
 	color: #633527;
 	text-shadow: 0px 1px #ffd51833;
+}
+
+#searchbar {
+	margin: .5em;
+	background: url("../media/felt-2.jpg"), radial-gradient(#2e6ec6, #395d93);
+	background-blend-mode:soft-light;
+	background-size: 250px, 100vw;
+	background-repeat: repeat, no-repeat;
+	border-radius: 5px;
+	box-shadow: /*5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset,*/ 0 5px 5px #0005;
+	padding: .1em;
+}
+#searchbartop {
+	
+	background: url("../media/felt-2.jpg"), linear-gradient(#2e6ec6, #395d93);
+	background-blend-mode: soft-light;
+	background-size: 250px, 100%;
+	background-position: center;
+	background-repeat: repeat, no-repeat;
+	background-clip: content-box, content-box;
+
+	border-radius: 5px;
+	box-shadow: 5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset;/* 0 5px 5px #0005;*/
+	border: 2px dotted #0ff5;
+	
+    padding: 0em;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+input[type="text"]{
+  background: none; /*linear-gradient(#2e6ec605, #395d9305);*/
+/*    background: url("../media/felt-2.jpg"), linear-gradient(#2e6ec6, #395d93);
+	background-blend-mode: soft-light;
+	background-size: 250px, 100%;
+	background-position: center;
+	background-repeat: repeat, no-repeat;
+	background-clip: content-box, content-box;
+*/
+	border-radius: 5px;
+	/*box-shadow: 5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset;/* 0 5px 5px #0005;*/
+	border: 2px dotted #0ff5;
+	
+	padding: 0;
+}
+#searchbar input, #searchbar label {
+  margin: .5rem;
 }
 
 #results {

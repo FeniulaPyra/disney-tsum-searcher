@@ -24,7 +24,8 @@ let app = new Vue({
 		//selectedTsums: [],
 		selectedAttributes: [],
 		tsumsOfCategories: [],
-		status: appStatuses.startup
+		status: appStatuses.startup,
+        searchTerm: '',
 	},
 	methods: {
 		selectTag(e) {
@@ -45,8 +46,9 @@ let app = new Vue({
 		},
 		selectedTsums() {
 			let selTsums = this.tsums;
-			
-			if(this.tsumsOfCategories.length < 1) return this.tsums;
+            selTsums = selTsums.filter(t => t.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+
+			if(this.tsumsOfCategories.length < 1) return selTsums;
 			
 			for(let a of this.tsumsOfCategories) {
 				selTsums = selTsums.filter(t => {return a[1].includes(t.id);});
@@ -86,9 +88,9 @@ function getTsumsWithTags(attributes){//, nextTsums) {
 			app.tsumsOfCategories.push([attr, tsumsInCategory]);
 			console.log("added '" + attr + "' to attributes");
 			console.log(app.tsumsOfCategories);
-
 		});
 	}
+
 }
 
 

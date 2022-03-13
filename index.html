@@ -15,6 +15,11 @@
 			<aside>
 				<h1>{{getAppStatus}}</h1>
 				<!--Tags and Searching here-->
+                <div id="searchbar">
+                  <div id="searchbartop">
+                    <label for="searchterm">Search: </label> <input type="text" id="searchterm" v-model="searchTerm">
+                  </div>
+                </div>
 				<details id="tags" v-for="category in sortedAttributes">
 					<summary><h2>{{category[0]}}</h2></summary>
 					<div id="categories">
@@ -34,8 +39,8 @@
 			<div id="results">
 				<!--Results Here-->
 				<div v-for="t in selectedTsums" v-bind:id="t.id" class="tsum">
-					<a v-bind:href="t.url">
-						<img v-bind:src="t.pic">
+					<a v-bind:href="t.url" v-bind:alt="t.name">
+						<img v-bind:src="t.pic" v-bind:alt="t.name">
 						<!--h2>{{t.name}}</h2-->
 					</a>
 				</div>
