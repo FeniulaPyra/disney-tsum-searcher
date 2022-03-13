@@ -47,6 +47,7 @@ details summary {
 }
 
 summary h2::before {
+    padding-left: .5rem;
 	content: "▶";
 }
 details[open] summary h2::before {
@@ -91,6 +92,10 @@ details[open] summary h2::before {
 	border-radius: 5px;
 	font-size: 36px;
 
+}
+
+summary h2 {
+  text-align: left;
 }
 
 input[type="checkbox"]:checked + label .tag{
