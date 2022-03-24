@@ -118,7 +118,7 @@ input[type="checkbox"]:checked + label .tagTop *{
 	text-shadow: 0px 1px #ffd51833;
 }
 
-#searchbar {
+#searchbar, #tsumInfoBackground {
 	margin: .5em;
 	background: url("../media/felt-2.jpg"), radial-gradient(#2e6ec6, #395d93);
 	background-blend-mode:soft-light;
@@ -191,7 +191,7 @@ input[type="text"]{
 	box-shadow: /*5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset,*/ 0 5px 5px #0005;
 	
 }
-.tsum a {
+.tsum > * {/*a {*/
 	display: flex;
 	flex-direction: column;
 	align-content: space-around;
@@ -222,4 +222,61 @@ input[type="text"]{
 .tsum img {
 	border-radius: 100%;
 	width: 75%;
+}
+/*
+
+#tsumInfo {
+    visibility: hidden;
+}*/
+
+#tsumInfoBackground {
+    position: fixed;
+    left: 37.5vw;
+    top: 10vh;
+    max-width: 25vw;
+    border-radius: 50px;
+}
+#tsumInfo #overlay {
+    position: fixed;
+    left: -10px;
+    top:0px;
+    width:100vw;
+    height: 100vh;
+    background: #000a;
+    margin: 0;
+}
+#tsumInfoTop {
+    background: url("../media/felt-2.jpg"), linear-gradient(#2e6ec6, #395d93);
+	background-blend-mode: soft-light;
+	background-size: 250px, 100%;
+	background-position: center;
+	background-repeat: repeat, no-repeat;
+	background-clip: content-box, content-box;
+
+	border-radius: 50px;
+	box-shadow: 5px 5px 10px #00ffff33 inset, -6px -6px 10px #00333333 inset;/* 0 5px 5px #0005;*/
+	border: 2px dotted #0ff5;
+	
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#tsumInfoTop > *{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#tsumInfoTop h2 {
+    margin-top: 30px
+}
+#tsumInfoTop #tsumTags {
+    margin-bottom: 30px;
+    max-height: 30vh;
+    overflow-y: auto;
+}
+#tsumInfoTop img {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
 }
