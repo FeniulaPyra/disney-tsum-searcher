@@ -39,12 +39,28 @@
 			<div id="results">
 				<!--Results Here-->
 				<div v-for="t in selectedTsums" v-bind:id="t.id" class="tsum">
-					<a v-bind:href="t.url" v-bind:alt="t.name">
+					<div v-on:click="selectTsum"><!--a v-bind:href="t.url" v-bind:alt="t.name"-->
 						<img v-bind:src="t.pic" v-bind:alt="t.name" v-bind:title="t.name">
 						<!--h2>{{t.name}}</h2-->
-					</a>
+					</div><!--/a-->
 				</div>
 			</div>
 		</main>
+        <div id="tsumInfo" v-show="showInfo">
+            <div id="overlay" v-on:click="hideTsumInfo"></div>
+            <div id="tsumInfoBackground"> <!--change to dialog tag once it is available on safari-->
+                <div id="tsumInfoTop">
+                    <h2>{{name}}</h2>
+                    <img v-bind:src="getImage(id)">
+                    <div id="wiki">
+                        <a v-bind:href="url">Fandom Wiki Link</a>
+                    </div>
+                    <br>
+                    <div id="tsumTags">
+                        <template v-for="a in attributes">{{a}}, </template>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>

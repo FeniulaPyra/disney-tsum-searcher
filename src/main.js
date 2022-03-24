@@ -26,6 +26,7 @@ let app = new Vue({
 		tsumsOfCategories: [],
 		status: appStatuses.startup,
         searchTerm: '',
+        tsumAttributeDictionary: {},
 	},
 	methods: {
 		selectTag(e) {
@@ -38,7 +39,14 @@ let app = new Vue({
 			}
 			this.status = appStatuses.filtering;
 			getTsumsWithTags(this.selectedAttributes);
-		}
+		},
+        selectTsum(e) {
+            let tsumID = e.target.parentElement.getAttribute('id') || e.target.parentElement.parentElement.getAttribute('id');
+            console.log(tsumID);
+            tsumInfo.id = tsumID;
+
+            getTsumCategories(tsumID);
+        }
 	},
 	computed: {
 		sortedAttributes() {
@@ -74,6 +82,27 @@ let app = new Vue({
 });
 
 
+let tsumInfo = new Vue({
+    el:'#tsumInfo',
+    data: {
+        id: 0,
+        name: '',
+        attributes:[],
+        url:'',
+        showInfo: false
+    },
+    methods: {
+        getImage(id) {
+            console.log(app.tsums);
+            let tsum = app.tsums.filter(t => {return t.id == id;});
+            return tsum[0] ? tsum[0].pic : '';
+        },
+        hideTsumInfo() {
+            this.showInfo =false;
+        }
+    }
+})
+
 
 function getTsumsWithTags(attributes){//, nextTsums) {
 	let tsums = app.tsums;
@@ -93,7 +122,41 @@ function getTsumsWithTags(attributes){//, nextTsums) {
 
 }
 
-
+function getTsumCategories(tsumID) {
+    
+    let results = app.tsumAttributeDictionary[""+tsumID];
+    
+    if(results) {
+        let rawCategories = results.categories;
+        
+        let rawTitle = results.title;
+        tsumInfo.name = rawTitle;
+        let categories = rawCategories.map(c => {return c.title.split(':')[1];});
+        tsumInfo.attributes = categories;
+        tsumInfo.url = "https://disneytsumtsum.fandom.com/" + results.title.replace(' ', '_');
+        tsumInfo.showInfo = true;
+        return;
+    }
+    
+    fetch("https://people.rit.edu/lep2738/tsum-searcher/proxy/proxy.php?action=gettsumcategories&ids=" + tsumID)
+    .then(response=>{ return response.json();})
+    .then(json=> {
+        let results = json.query.pages["" + tsumID];
+        //adds to dictionary so we don't have to repeatedly call this.
+        app.tsumAttributeDictionary[""+tsumID] = results;
+        
+        let rawCategories = results.categories;
+        
+        let rawTitle = results.title;
+        tsumInfo.name = rawTitle;
+        let categories = rawCategories.map(c => {return c.title.split(':')[1];});
+        tsumInfo.attributes = categories;
+        tsumInfo.url = "https://disneytsumtsum.fandom.com/" + results.title.replace(' ', '_');
+    })
+    .then(()=>{
+        tsumInfo.showInfo = true;
+    });
+}
 
 function init() {
 	//get all tsums
